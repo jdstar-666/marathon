@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{% static "css/custom.css" %}">
+{% endblock stylesheets %}
+
+{% block nav %}
+    {% include "nav.html" %}
+{% endblock nav %}
+
+{% block content %}
+<div class="jumbotron">
+    <h1>新闻客户端采集系统</h1>
+    <ul class="appiconlist">
+        <li class="appicon-large"><img src="{% static "img/icons/icon-baidu.png"%}" alt=""></li>
+        <li class="appicon-large"><img src="{% static "img/icons/icon-bbc.png"%}" alt=""></li>
+        <li class="appicon-large"><img src="{% static "img/icons/icon-cctv.png"%}" alt=""></li>
+        <li class="appicon-large"><img src="{% static "img/icons/icon-ifeng.png"%}" alt=""></li>
+        <li class="appicon-large"><img src="{% static "img/icons/icon-netease.png"%}" alt=""></li>
+        <li class="appicon-large"><img src="{% static "img/icons/icon-paper.png"%}" alt=""></li>
+        <li class="appicon-large"><img src="{% static "img/icons/icon-qihoo.png"%}" alt=""></li>
+        <li class="appicon-large"><img src="{% static "img/icons/icon-reuters.png"%}" alt=""></li>
+        <li class="appicon-large"><img src="{% static "img/icons/icon-sina.png"%}" alt=""></li>
+        <li class="appicon-large"><img src="{% static "img/icons/icon-sohu.png"%}" alt=""></li>
+        <li class="appicon-large"><img src="{% static "img/icons/icon-tencent.png"%}" alt=""></li>
+        <li class="appicon-large"><img src="{% static "img/icons/icon-toutiao.png"%}" alt=""></li>
+        <li class="appicon-large"><img src="{% static "img/icons/icon-wallstreet.png"%}" alt=""></li>
+        <li class="appicon-large"><img src="{% static "img/icons/icon-zaobao.png"%}" alt=""></li>
+        <li class="appicon-large text-info">more is coming... </li>
+    </ul>
+</div>
+{% endblock content %}

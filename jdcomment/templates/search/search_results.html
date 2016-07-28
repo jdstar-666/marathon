@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{% static "css/custom.css" %}">
+    <style>
+        #search-resultpanel{
+            /*margin-left: 15px;*/
+        }
+    </style>
+{% endblock stylesheets %} 
+
+{% block nav %}
+    {% include "nav.html" with dapp="search" %}
+{% endblock nav %}
+
+{% block content %}
+
+<div class="row" id="search-form" >
+    <div class="col-md-8 col-md-push-2" >
+    {% include "search/searchform.html" %}
+    </div>
+</div>
+<div class="row" >
+    {% if error %}
+    <div class="col-md-8 col-md-push-2">
+        <div class="alert alert-warning alert-dismissible fade in" role="alert">
+          <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          <strong>有错误啦！</strong> {{ message }}
+        </div>
+    </div>
+    {% elif newslist.count != 0 %}
+    <div class="col-md-10 col-md-push-2" id="search-resultpanel">
+    {% include "newslist/newsitemspanel.html" %}
+    {% include "pagination.html" %}
+    </div>
+    {% else %}
+    <div class="col-md-8 col-md-push-2">
+        <div class="alert alert-info alert-info fade in" role="alert">
+            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <strong>没有记录。</strong>再试试别的查询？
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock content %}

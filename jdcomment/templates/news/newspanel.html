@@ -1,0 +1,7 @@
+<div class="tab-content">
+{% for channel in channels %}
+    <div role="tabpanel" class="tab-pane well fade" id="channel-tab-{{ forloop.counter }}">
+        {{ channel.chlname }}
+    </div>
+{% endfor %}
+</div>

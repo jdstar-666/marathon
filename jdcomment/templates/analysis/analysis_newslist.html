@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{% static "css/custom.css" %}">
+{% endblock stylesheets %} 
+
+{% block nav %}
+    {% include "nav.html" with dapp="analysis" %}
+{% endblock nav %}
+
+{% block content %}
+<div class="row">
+    <!-- <div class="col-md-9">
+        <a href="#sdafasdfdasf" class="btn btn-warning" id="abutton">click</a>
+    </div> -->
+</div>
+<div class="row">
+    <div class="col-md-3">
+        <div>
+            <h3>要分析的新闻：</h3>
+        </div>
+        <div id="titles">
+            <ol id="titlelist">
+                
+            </ol>
+        </div>
+    </div>
+    <div class="col-md-9" id="reportspanel">
+        <h3>点击查看各项分析</h3>
+        <section id="commentrank-section">
+            <div class="panel panel-default" id="commentrank-panel">
+                <div class="panel-heading" role="tab" id="commentrank-head">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" id="commentrank-anchor" href="#commentrank" aria-expanded="true" class="toggleicon" aria-controls="collapseOne">
+                            <span class="glyphicon glyphicon-chevron-up" style="display:none"></span><span class="glyphicon glyphicon-chevron-down"></span> 评论排名
+                        </a>
+                    </h4>
+                </div>
+                <div id="commentrank" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                    <div class="panel-body" id="commentrank-body">
+                        <div id="commentrank-chart" >
+                            正在载入... 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="province-distribution-section">
+            <div class="panel panel-default" id="province-distribution-panel">
+                <div class="panel-heading" role="tab" id="province-distribution-head">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" id="province-distribution-anchor" href="#province-distribution" aria-expanded="true" class="toggleicon" aria-controls="collapseOne">
+                            <span class="glyphicon glyphicon-chevron-up" style="display:none"></span><span class="glyphicon glyphicon-chevron-down"></span> 评论省份分布图
+                        </a>
+                    </h4>
+                </div>
+                <div id="province-distribution" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                    <div class="panel-body" id="province-distribution-body">
+                        <div id="province-distribution-map">
+                            正在载入... 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="comment-tag-section">
+            <div class="panel panel-default" id="comment-tag-panel">
+                <div class="panel-heading" role="tab" id="comment-tag-head">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" id="comment-tag-anchor" class="toggleicon" href="#comment-tag" aria-expanded="true" aria-controls="collapseOne">
+                            <span class="glyphicon glyphicon-chevron-up" style="display:none"></span><span class="glyphicon glyphicon-chevron-down"></span> 新闻关键词
+                        </a>
+                    </h4>
+                </div>
+                <div id="comment-tag" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                    <div class="panel-body" id="comment-tag-body">
+                        <div id="comment-tag-cloud" class="row">
+                            正在载入... 
+                            <br>
+                            需要大量的计算资源，感觉只适合离线
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+{% endblock content %}
+
+{% block scripts %}
+<script src="{% static 'js/highchart/highcharts.js' %}"></script>
+<script src="{% static 'js/highchart/map.js' %}"></script>
+<script src="{% static 'js/highchart/exporting.js' %}"></script>
+<script src="{% static 'js/highchart/cn-all.js' %}"></script>
+<!-- <script src="{% static 'js/highchart/highcharts-more.js' %}"></script> -->
+<script src="{% static 'js/analysis.js' %}"></script>
+{% endblock scripts %}
+

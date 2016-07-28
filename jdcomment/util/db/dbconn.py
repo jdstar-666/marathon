@@ -4,7 +4,7 @@
 # @Date:   2016-04-29T17:06:11+08:00
 # @Email:  lisnb.h@hotmail.com
 # @Last modified by:   lisnb
-# @Last modified time: 2016-07-27T18:34:13+08:00
+# @Last modified time: 2016-07-28T06:44:47+08:00
 
 
 
@@ -104,7 +104,7 @@ class MySQLConn(DBConn):
             return True, r
         except Exception, e:
             desc = 'Error in execute this sql: %s, original exception: %s'%(sql, e)
-            # traceback.print_exc()
+            traceback.print_exc()
             self.logger.error(desc)
             return False, None
 
@@ -142,6 +142,7 @@ class MySQLConn(DBConn):
         except Exception, e:
             desc = 'Error in query this sql: %s, original exception: %s'%(sql, e)
             self.logger.error(desc)
+            traceback.print_exc()
             return False, ()
 
     def insert(self, sql, args=None):

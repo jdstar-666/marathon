@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{% static "css/custom.css" %}">
+{% endblock stylesheets %} 
+
+{% block nav %}
+    {% include "nav.html" with dapp="news" %}
+{% endblock nav %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-3">
+        <div class="btn-group" id="newspaneltype">
+            <a type="button" class="btn btn-default active" href="/news">
+                <span class="glyphicon glyphicon-list"></span> 按应用显示
+            </a>
+            <a type="button" class="btn btn-default" href="/newslist">
+                <span class="glyphicon glyphicon-align-justify"></span> 混合显示
+            </a>
+        </div>
+        {% include "news/app.html" %}
+    </div>
+    <div class="col-md-9">
+        {% include "news/newchannel.html" %}
+        {% include "news/channelpanel.html" %}
+        <div class="row">
+            <div class="col-md-10" id="newsitemspanel">
+                <nav>
+                    <ul class="pagination">
+                        {% for pn in pages %}
+                        <li {% if page == pn %}class="active" {%endif%}><a href="?page={{ pn }}">{{ pn }}</a></li>
+                        {% endfor %}
+                        <li><a href="?page={{ page|add:1 }}">&raquo;</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

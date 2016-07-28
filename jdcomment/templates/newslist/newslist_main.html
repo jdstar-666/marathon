@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{% static "css/custom.css" %}">
+    <style>
+        body{
+            padding-bottom: 70px;
+        }
+    </style>
+{% endblock stylesheets %} 
+
+{% block nav %}
+    {% include "nav.html" with dapp="newslist" %}
+{% endblock nav %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-3">
+        <div class="btn-group" id="newspaneltype">
+            <a type="button" class="btn btn-default" href="/news">
+                <span class="glyphicon glyphicon-list"></span> 按应用显示
+            </a>
+            <a type="button" class="btn btn-default active" href="/newslist">
+                <span class="glyphicon glyphicon-align-justify"></span> 混合显示
+            </a>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        {% include "pagination_ajax.html" %}
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12" id="newsitemspanel">
+    {% include "newslist/newsitemspanel.html" %}
+    </div>
+</div>
+
+<nav id="aqnav" class="navbar navbar-default navbar-fixed-bottom" role="navigation">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-10">
+                <div class="row" id="aq">
+                    
+                </div>
+            </div>
+            <div class="col-md-2">
+                <!-- <a href="#" class="btn btn-success" id="gotoanalysis">转到分析页面</a> -->
+                <div class="btn-group" id="aqcontrol">
+                    <button type="button" class="btn btn-primary" id="gotoanalysis"><span class="glyphicon glyphicon-cloud-upload"></span> 分析</button>
+                    <button type="button" class="btn btn-danger" id="emptyaq"><span class="glyphicon glyphicon-trash"></span> 移除全部</button>
+                    <!-- <button type="button" class="btn btn-default">Right</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- <div class="row">
+    <div class="col-md-10 col-md-offset-2">
+        {% include "pagination.html" %}
+    </div>
+</div> -->
+{% endblock content %}
+
+{% block scripts %}
+<script src="{% static 'js/jsrender.min.js' %}"></script>
+<script src="{% static 'js/newslist.js' %}"></script>
+{% verbatim searchaheadresult %}
+
+<script id="newstemplate" type="text/x-jsrender">
+<div class="row newsitem">
+    <div class="col-md-1">
+        <img src="/static/img/icons/icon-{{:gapp.ename}}.png" width="50px" alt="{{:gapp.name }}">
+        <!--img src="{{:gthumb}}" width="50px" alt="{{:gapp.name }}"-->
+    </div>
+    <div class="col-md-1 newsitem-channel">
+        <span class="label label-primary">
+            {{:gchannel.gname}}
+        </span>
+    </div>
+    <div class="col-md-6">
+        <div class="row newsitem-title">
+            <!-- <div class="col-md-7"> -->
+            <a href="{{:gurl}}" target="_blank">{{:title }}</a>
+            <!-- </div> -->
+        </div>
+        <div class="row newsitem-abstract">
+            {{:abstract }}
+        </div>
+    </div>
+    <div class="col-md-1">
+        <button class="btn btn-default addtoqueue" data-newsid={{:gnewsid}} data-title="{{:title}}"><span class="glyphicon glyphicon-plus-sign"></span></button>
+    </div>
+    <div class="col-md-3">
+        <div class="row newsitem-source">
+            <span class="label label-info">
+                {{:source}}
+            </span>
+        </div>
+        <div class="row newsitem-time">
+                {{:gpubtime }}
+        </div>
+    </div>
+</div>
+</script>
+{% endverbatim searchaheadresult%}
+{% endblock scripts%}

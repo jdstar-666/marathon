@@ -4,7 +4,7 @@
 # @Date:   2016-07-27T14:56:21+08:00
 # @Email:  lisnb.h@hotmail.com
 # @Last modified by:   lisnb
-# @Last modified time: 2016-07-27T22:52:45+08:00
+# @Last modified time: 2016-07-28T03:28:40+08:00
 
 
 
@@ -15,7 +15,7 @@ import json
 from util.db.jddao import dao
 # Create your views here.
 
-import md5
+# import md5
 
 def login(request):
     user_name = request.POST.get('user_name')
@@ -36,7 +36,7 @@ def login(request):
     # encryped_passwd = md5_user_passwd.hexdigest()
     encryped_passwd = user_passwd
     args = {
-        'user_name': user_name.encode('utf8'),
+        'user_name': user_name,#.encode('utf8'),
         'ps': encryped_passwd
     }
     user, errormsg = dao.login(args)

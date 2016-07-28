@@ -1,0 +1,51 @@
+<!--
+@Author: lisnb
+@Date:   2016-07-27T23:41:34+08:00
+@Email:  lisnb.h@hotmail.com
+@Last modified by:   lisnb
+@Last modified time: 2016-07-28T11:33:27+08:00
+-->
+
+
+
+<nav class="navbar navbar-default" id="nav" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#wiesler-nav">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="/" class="navbar-brand" style="color: rgb(200, 20, 35);">JD.COM</a>
+        </div>
+        <nav class="collapse navbar-collapse" id="wiesler-nav">
+            <ul class="nav navbar-nav">
+                <li {% if dapp == '' %} class = "active" {% endif %}>
+                    <a href="#"><span class="glyphicon glyphicon-stats"></span> 首页</a>
+                </li>
+                <li {% if dapp == 'profile' %} class = "active" {% endif %}>
+                    <a href="/"><span class="glyphicon glyphicon-list"></span> 个人中心</a>
+                </li>
+                <li {% if dapp == 'detail' %} class = "active" {% endif %}>
+                    <a href="#"><span class="glyphicon glyphicon-wrench"></span> 商品详情</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li>
+                  <a href="#" id="login" data-toggle="modal" data-target="#login-modal">  <span class="glyphicon glyphicon-user"></span> <span id='username'>用户中心</span></a>
+              </li>
+                <!-- <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <span class="glyphicon glyphicon-user"></span> {{ username|default:"None   " }}已登录,{% now " Y/m/d" %} <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#"><span class="glyphicon glyphicon-cog"></span> 设置</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> 退出</a></li>
+                    </ul>
+                </li> -->
+            </ul>
+        </nav>
+    </div>
+</nav>

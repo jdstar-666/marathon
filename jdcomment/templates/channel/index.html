@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{% static "css/custom.css" %}">
+{% endblock stylesheets %} 
+
+{% block nav %}
+    {% include "nav.html" with dapp="channel" %}
+{% endblock nav %}
+
+
+{% block content %}
+<div class="row">
+    <div class="col-md-3 col-xs-3">
+        <div class="text-left" id="apppanel">
+            <ul class="nav nav-pills nav-stacked" role="tablist" id="applist">
+
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-9 col-xs-9">
+
+        <div class="row" id="channelpanel">
+            <ul id="channellist">
+            </ul>
+        </div>
+        {% include "bs_alert.html" %}
+    </div>
+</div>
+{% endblock content %}
+
+
+{% block scripts %}
+<script src="{% static "js/jsrender.min.js" %}"></script>
+<script src="{% static "js/common.js" %}"></script>
+<script src="{% static "js/channel.js" %}"></script>
+{% verbatim searchaheadresult %}
+
+<script id="channeltemplate" type="text/x-jsrender">
+    <li class="channelitem">
+        <label class="checkbox-inline">
+            <input type="checkbox" name="channels[]" value="{{:gchannelid}}" {{if collect}} checked {{/if}} data-id="{{:_id}}"/>{{:gname}}
+        </label>
+    </li>
+</script>
+
+<script id="apptemplate" type="text/x-jsrender">
+<li role="presentation">
+    <a href="#" data-appename={{:ename}} class="appitem">
+        <img src="/static/img/icons/icon-{{:ename}}.png" width="50px" alt="{{:name}}" class="appicon"/>{{:name}}
+    </a>
+</li>
+</script>
+
+<script id="sartemplate" type="text/x-jsrender">
+<div class="row searchaheaditem">
+    <div class="col-md-12" >
+    <img src="/static/img/icons/icon30-{{:gapp.ename}}.png" alt="{{:gapp.name}}">
+    <a href={{:gurl}} target="blank" style="margin-left:.5em;padding-top:.5em;">{{:title}}</a>
+    </div>
+</div>
+</script>
+{% endverbatim searchaheadresult%}
+{% endblock scripts %}

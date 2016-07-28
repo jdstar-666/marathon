@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{% static "css/custom.css" %}">
+{% endblock stylesheets %}
+
+{% block nav %}
+    {% include "nav.html" with dapp="status" %}
+{% endblock nav %}
+
+
+{% block content %}
+<div class="row">
+    <div class="col-md-3 col-xs-3">
+        <div class="text-left" id="apppanel">
+            <ul class="nav nav-pills nav-stacked" role="tablist" id="applist">
+
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-9 col-xs-9">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                采集新闻数<a id="refresh-counts" class="refresh-button" type="button"><span class="glyphicon glyphicon-refresh"></span></a>
+            </div>
+            <div id="chart-allapps" class="panel-body">
+            正在载入...
+            </div>
+        </div>
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                采集器状态<a id="refresh-status" class="refresh-button" type="button"> <span class="glyphicon glyphicon-refresh"> </span></a>
+            </div>
+            <div id="status-collectors-panel" class="panel-body">
+                <span id="collectors-loading">正在载入... </span>
+                <table class="table table-striped" >
+                    <thead>
+                        <tr>
+                            <th>采集器</th>
+                            <th>进程ID</th>
+                            <th>进程启动时间</th>
+                            <th>运行时间</th>
+                            <th>运行状态</th>
+                        </tr>
+                    </thead>
+                    <tbody id="collectortable">
+                    </tbody>
+                </table>
+            </div>
+            <div class="panel-footer">
+                当采集器部署在Windows平台上时，不提供采集器状态
+            </div>
+        </div>
+
+        {% include "bs_alert.html" %}
+    </div>
+</div>
+{% endblock content %}
+
+
+{% block scripts %}
+<!-- <script src="{% static "js/jsrender.min.js" %}"></script> -->
+<script src="{% static "js/highchart/highcharts.js" %}"></script>
+<script src="{% static "js/jsrender.min.js" %}"></script>
+<script src="{% static "js/common.js" %}"></script>
+<script src="{% static "js/status.js" %}"></script>
+{% verbatim searchaheadresult %}
+<script id="collectortemplatetr" type="text/x-jsrender"> 
+    <tr {{if running}}{{else}}class="danger"{{/if}}>
+        <td>{{:name}}</td>
+        <td>{{:pid}}</td>
+        <td>{{:lstart}}</td>
+        <td>{{:etime}}</td>
+        <td class={{if running}}"text-success"{{else}}"text-danger"{{/if}}>
+            {{if running}}Running{{else}}Stopped{{/if}}
+        </td>
+    </tr>
+</script>
+<script id="collectortemplate" type="text/x-jsrender">
+    <li class="collectoritem">
+        <div>
+            <span class="collectorname">{{:name}}</span>
+            <span class="collectoretime">{{:etime}}</span>
+            {{if running}}
+            <span class="label label-success collectorstatus">Running</span>
+            {{else}}
+            <span class="label label-danger collectorstatus">Stopped</span>
+            {{/if}}
+        </div>
+    </li>
+</script>
+
+<script id="channeltemplate" type="text/x-jsrender">
+    <li class="channelitem">
+        <label class="checkbox-inline">
+            <input type="checkbox" name="channels[]" value="{{:gchannelid}}" {{if collect}} checked {{/if}} data-id="{{:_id}}"/>{{:gname}}
+        </label>
+    </li>
+</script>
+
+<script id="apptemplate" type="text/x-jsrender">
+<li role="presentation">
+    <a href="#" data-appename={{:ename}} class="appitem">
+        <img src="/static/img/icons/icon-{{:ename}}.png" width="50px" alt="{{:name}}" class="appicon"/>{{:name}}
+    </a>
+</li>
+</script>
+
+<script id="sartemplate" type="text/x-jsrender">
+<div class="row searchaheaditem">
+    <div class="col-md-12" >
+    <img src="/static/img/icons/icon30-{{:gapp.ename}}.png" alt="{{:gapp.name}}">
+    <a href={{:gurl}} target="blank" style="margin-left:.5em;padding-top:.5em;">{{:title}}</a>
+    </div>
+</div>
+</script>
+{% endverbatim searchaheadresult%}
+{% endblock scripts %}

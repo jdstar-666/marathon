@@ -4,11 +4,11 @@
 # @Date:   2016-07-27T14:56:29+08:00
 # @Email:  lisnb.h@hotmail.com
 # @Last modified by:   lisnb
-# @Last modified time: 2016-07-27T22:05:36+08:00
+# @Last modified time: 2016-07-28T10:05:19+08:00
 
 
 
-from django.shortcuts import render
+from django.shortcuts import render, render_to_response
 from django.http import HttpResponse
 import json
 from util.db.jddao import dao
@@ -88,3 +88,6 @@ def comments(request):
         'comments': comments
     }
     return HttpResponse(json.dumps(response))
+
+def item(request):
+    return render_to_response('jd/item.html')

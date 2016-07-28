@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{% static "css/custom.css" %}">
+    <link rel="stylesheet" href="{% static "css/datetimepicker.min.css" %}">
+{% endblock stylesheets %}
+
+{% block nav %}
+    {% include "nav.html" with dapp="console" %}
+{% endblock nav %}
+
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12 col-xs-12">
+        {% include "bs_alert.html" %}
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                初始化新闻客户端
+            </div>
+            <div class="panel-body"></div>
+            <div class="panel-footer"></div>
+        </div>
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                初始化新闻客户端频道
+            </div>
+            <div class="panel-body"></div>
+            <div class="panel-footer"></div>
+        </div>
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                启动采集器
+            </div>
+            <div class="panel-body"></div>
+            <div class="panel-footer"></div>
+        </div>
+        <div class="panel panel-danger  text-danger">
+            <div class="panel-heading">
+                <span class="glyphicon glyphicon-warning-sign"> 清空查重数据库
+            </div>
+            <div class="panel-body">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-md-3 col-xs-3 control-label">清空以下记录：</label>
+                        <div class="col-md-6 col-xs-6">
+                            <div>
+                                <label>
+                                    <input type="radio" id="time-nolimit" name="timeoption" value="nolimit">清空所有记录
+                                </label>
+                            </div>
+                            <div>
+                                <label>
+                                    <input type="radio" id="time-before" name="timeoption" value="before">清空以下时间前的记录
+                                </label>
+                                <div class="input-group date form_date has-error" data-date="" data-date-format="yyyy-mm-ddThh:ii:ss" data-link-field="bdtp_input" data-link-format="yyyy-mm-dd">
+                                    <input id="before" class="form-control" size="16" type="text" value="">
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="rcaptcha" class="col-md-3 col-xs-3 control-label ">输入以下字符串：</label>
+                        <div class="col-md-6 col-xs-6">
+                            <div class="input-group has-error">
+                                <input type="text" class="form-control" id="captcha" readonly>
+                                <span class="input-group-btn has-error">
+                                    <button id="refresh-captcha" class="btn btn-default has-error" type="button"><span class="glyphicon glyphicon-refresh"></span></button>
+                                </span>
+                            </div>
+                            <!-- <div class="well well-sm">
+                                <span id="captcha">68768437564</span>
+                            </div> -->
+                            <div class="has-error">
+                                <input type="text" class="form-control" id="rcaptcha" placeholder="输入上述字符串，防止误操作">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-3 col-md-6 col-xs-offset-3 col-xs-6">
+                            <a href="#" class="btn btn-danger" id="btn-delete-checkdup"><span class="glyphicon glyphicon-warning-sign"> 清除</span></a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="panel-footer">
+                <ul>
+                    <li>查重数据库用于在采集时避免采集重复的新闻</li>
+                    <li>清空查重数据库将清除数据库中所有的数据记录</li>
+                    <li>此操作不可恢复</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block scripts %}
+<script src="{% static "js/datetimepicker.min.js" %}"></script>
+<script src="{% static "js/datetimepicker.zh-CN.js" %}"></script>
+<script src="{% static "js/jsrender.min.js" %}"></script>
+<script src="{% static "js/common.js" %}"></script>
+<script src="{% static "js/console.js" %}"></script>
+{% verbatim initializedatetimepicker %}
+<script>
+    $(document).ready(function(){
+        $('.form_date').datetimepicker({
+            language:  'zh-CN',
+            weekStart: 1,
+            todayBtn:  1,
+            autoclose: 1,
+            todayHighlight: 1,
+            startView: 1,
+            minView: 0,
+            maxView: 2,
+            forceParse: 0
+        });
+    });
+</script>
+{% endverbatim initializedatetimepicker %}
+{% endblock scripts %}

@@ -1,0 +1,34 @@
+/**
+* @Author: lisnb
+* @Date:   2016-07-28T05:35:58+08:00
+* @Email:  lisnb.h@hotmail.com
+* @Last modified by:   lisnb
+* @Last modified time: 2016-07-28T09:16:41+08:00
+*/
+
+.item-pic {
+  max-width: 150px;
+}
+
+
+#items-panel{
+  margin-top: 50px;
+}
+
+.index {
+  margin-bottom: 20px;
+}
+
+.item-row{
+  margin-bottom: 50px;
+  padding-top: 10px;
+  border-top: 1px solid gray;
+}
+
+.comment-image-thumb {
+  margin-right: 10px;
+}
+
+.comment-image-thumb > img {
+  width: 40px;
+}

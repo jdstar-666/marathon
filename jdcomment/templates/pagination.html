@@ -1,0 +1,8 @@
+<nav>
+    <ul class="pagination">
+        {% for pn in pages %}
+        <li {% if page == pn %}class="active" {%endif%}><a href="?query={{querystring|default:""}}&page={{ pn }}">{{ pn }}</a></li>
+        {% endfor %}
+        <li><a href="?query={{querystring|default:""}}&page={{ page|add:1 }}">&raquo;</a></li>
+    </ul>
+</nav>

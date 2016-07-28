@@ -1,0 +1,45 @@
+<!--
+@Author: lisnb
+@Date:   2016-07-27T23:41:34+08:00
+@Email:  lisnb.h@hotmail.com
+@Last modified by:   lisnb
+@Last modified time: 2016-07-28T03:45:54+08:00
+-->
+
+
+
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <title>{{ title | default:"666" }}</title>
+        <link rel="stylesheet" href="{% static "css/wiesler-bs-no-radius.css" %}">
+        {% block stylesheets %}
+        {% endblock stylesheets %}
+
+    </head>
+    <body>
+        {% block nav %}
+        {% endblock nav %}
+
+        <div class="container">
+            {% block content %}
+            {% endblock content %}
+        </div>
+
+
+        {% block footer %}
+        {% endblock footer %}
+
+
+        <script src="{% static "js/jquery-3.1.0.min.js" %}"></script>
+        <script src="{% static "js/wiesler-bs.js" %}"></script>
+
+
+        {% block scripts %}
+
+        {% endblock scripts %}
+    </body>
+</html>

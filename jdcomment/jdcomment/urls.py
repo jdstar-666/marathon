@@ -4,7 +4,7 @@
 # @Date:   2016-07-27T13:54:19+08:00
 # @Email:  lisnb.h@hotmail.com
 # @Last modified by:   lisnb
-# @Last modified time: 2016-07-27T15:07:06+08:00
+# @Last modified time: 2016-07-28T04:11:57+08:00
 
 
 
@@ -28,11 +28,15 @@ from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 # from console import views
+from jdcomment import views
 
 urlpatterns = [
+    url(r'^$', views.index),
     url(r'^admin/', admin.site.urls),
     url(r'^jditem/', include('jditem.urls')),
     url(r'^jduser/', include('jduser.urls')),
     url(r'^jdorder/', include('jdorder.urls')),
     url(r'^comment/', include('comment.urls')),
 ]
+
+urlpatterns.append(url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}))

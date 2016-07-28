@@ -4,14 +4,15 @@
 # @Date:   2016-07-27T14:56:35+08:00
 # @Email:  lisnb.h@hotmail.com
 # @Last modified by:   lisnb
-# @Last modified time: 2016-07-27T23:01:09+08:00
+# @Last modified time: 2016-07-28T04:28:31+08:00
 
 
 
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, render_to_response
 import json
 from util.db.jddao import dao
+from time import time
 # Create your views here.
 
 
@@ -49,18 +50,18 @@ def order(request):
     return HttpResponse(json.dumps(response))
 
 def all_order(request):
-    user_name = request.GET.get('user_id')
-    if not user_name:
+    user_id = request.GET.get('user_id')
+    if not user_id:
         response = {
             'code': -1,
-            'msg': 'No user_name is provided.'
+            'msg': 'No user_id is provided.'
         }
         return HttpResponse(json.dumps(response))
 
     dt_from = int(request.GET.get('dt_from', 0))
     dt_to = int(request.GET.get('dt_to', int(time())))
     args = {
-        'user_name': user_name,
+        'user_id': user_id,
         # 'limit': limit,
         # 'page': page,
         'dt_from': dt_from,
@@ -87,9 +88,14 @@ def all_order(request):
             'msg': errormsg
         }
         return HttpResponse(json.dumps(response))
+    # print orders
     response = {
         'code': 0,
         'msg': 'success',
         'orders': orders
     }
     return HttpResponse(json.dumps(response))
+
+
+def comment(request):
+    return render_to_response('jd/comment.html')

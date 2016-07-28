@@ -1,0 +1,36 @@
+{% load staticfiles %}
+<div class="row newsitem">
+    {% if withicon %}
+    <div class="col-md-1">
+        <img src="{% static "img/icons/icon-"|add:news.gapp.ename|add:".png"  %}" width="50px" alt="{{ news.gapp.name }}">
+    </div>
+    <div class="col-md-2 newsitem-channel">
+        <span class="label label-primary">
+            {{ news.gchannel.gname|default:"未知频道" }}
+        </span>
+    </div>
+    <div class="col-md-6">
+    {% else %}
+    <div class="col-md-8">
+    {% endif %}
+
+        <div class="row newsitem-title">
+            <!-- <div class="col-md-7"> -->
+            <a href="{{ news.gurl}}" target="_blank">{{ news.title }}</a>
+            <!-- </div> -->
+        </div>
+        <div class="row newsitem-abstract">
+            {{ news.abstract }}
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="row newsitem-source">
+            <span class="label label-info">
+                {{ news.source|default:"未知来源" }}
+            </span>
+        </div>
+        <div class="row newsitem-time">
+                {{ news.gpubtime }}
+        </div>
+    </div>
+</div>

@@ -1,0 +1,7 @@
+<div class="row" id="channelpanel">
+    <div class="col-md-10">
+    {% for news in newslist %}
+        {% include "newslist/newsitem.html" with app="tencent" %}
+    {% endfor %}
+    </div>
+</div>

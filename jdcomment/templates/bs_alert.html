@@ -1,0 +1,12 @@
+<div id="bs-alert-panel">
+
+</div>
+
+{% verbatim alert %}
+<script id="alerttemplate" type="text/x-jsrender">
+    <div class="alert alert-{{:type}} alert-dismissible bs-alert" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <strong>{{:title}}</strong> {{:body}}
+    </div>
+</script>
+{% endverbatim alert %}

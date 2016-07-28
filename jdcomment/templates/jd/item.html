@@ -1,0 +1,94 @@
+<!--
+@Author: lisnb
+@Date:   2016-07-28T09:54:43+08:00
+@Email:  lisnb.h@hotmail.com
+@Last modified by:   lisnb
+@Last modified time: 2016-07-28T11:37:30+08:00
+-->
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{% static "css/jd-item.css" %}">
+    <link rel="stylesheet" href="{% static "css/star-rating.css" %}">
+{% endblock stylesheets %}
+
+{% block nav %}
+    {% include "nav.html" with dapp="detail" %}
+{% endblock nav %}
+
+{% block content %}
+<div class="row" id="detail-wrapper">
+</div>
+<div class="row">
+  <div class="col-md-8 col-md-push-1"  id="comment-wrapper">
+  </div>
+</div>
+
+{% endblock content %}
+
+
+{% block scripts %}
+
+<script src="{% static "js/jsrender.min.js" %}"></script>
+<script type="text/javascript" src="{% static "js/star-rating.min.js" %}"></script>
+<!-- <script type="text/javascript" src="{% static "js/ajaxupload.3.9.js" %}"></script> -->
+<!-- <script type="text/javascript" src="{% static "js/star-rating.locale.zh.js" %}"></script> -->
+<script src="{% static "js/jd-item.js" %}"></script>
+
+{% verbatim templates %}
+
+<script id="detail-template" type="text/x-jsrender">
+<div class="row" id="detail-board">
+  <div class="col-md-4" id="picture-panel">
+    <img src="/media/items/{{:item_pic}}" id="detail-picture">
+  </div>
+  <div class="col-md-7 specs">
+    <div class="row">
+      <h3>{{:item_title}}</h3>
+    </div>
+    <div class="row">
+      <h5 class="price">￥{{:item_price}}</h5>
+    </div>
+    <div class="row">
+      <p>
+        {{:item_des}}
+      </p>
+    </div>
+    <div class="row">
+      <input name="{{:item_id}}" type="text" class="rating"  min=0 max=5 step=1 data-size="xs" value="{{:score}}">
+    </div>
+  </div>
+</div>
+</script>
+
+
+
+<script id="comment-template" type="text/x-jsrender">
+<div class="row comment-row">
+  <div class="comment-content">
+    <span class="comment-content">
+      {{:comment}}
+    </span>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <span class="comment-date">{{:evaluation_time}}</span>
+  </div>
+  <div class="comment-info">
+
+    <span class="comment-score"><input type="text" class="rating" min=0 max=5 step=1 data-size="xs" value="{{:score}}"></span>
+  </div>
+  <div class="gallery">
+    {{:pictures}}
+  </div>
+</div>
+</script>
+
+<script id="picture-template" type="text/x-jsrender">
+<div class="picture-item">
+  <img src="/media/upload/{{:pic_path}}">
+</div>
+</script>
+
+
+{% endverbatim templates %}
+{% endblock scripts %}

@@ -1,0 +1,12 @@
+<div>
+    <ul class="nav nav-tabs" role="tablist">
+    {% for channel in  channels %}
+        <li role="presentation">
+            <a href="#channel-tab-{{ forloop.counter }}" role="tab" data-toggle="tab">
+                {{ channel.gname|default:"未知频道" }}
+            </a>
+        </li>
+    {% endfor %}
+    </ul>
+    {% include "news/newspanel.html" %}
+</div>

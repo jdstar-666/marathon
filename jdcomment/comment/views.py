@@ -4,7 +4,7 @@
 # @Date:   2016-07-27T14:56:53+08:00
 # @Email:  lisnb.h@hotmail.com
 # @Last modified by:   lisnb
-# @Last modified time: 2016-07-27T22:29:25+08:00
+# @Last modified time: 2016-07-28T09:21:24+08:00
 
 
 
@@ -16,39 +16,74 @@ from django.conf import settings
 from PIL import Image
 import uuid
 import os
+from datetime import datetime
 # Create your views here.
+
+
+def upload_image(request):
+    item_id = request.POST.get('item_id')
+    print 'item_id', item_id
+    if 'picture' not in request.FILES:
+        response = {
+            'code': -2,
+            'msg': 'No picture'
+        }
+        return HttpResponse(json.dumps(response))
+
+    image = request.FILES['picture']
+    # pic_root = os.path.join(settings.MEDIA_ROOT, 'upload', item_id)
+    pic_root = os.path.join(settings.MEDIA_ROOT, 'upload')
+    if not os.path.isdir(pic_root):
+        os.mkdir(pic_root)
+    image = Image.open(image)
+    name = '%s.jpg'%uuid.uuid1()
+    path = os.path.join(pic_root, name)
+    image.save(path, 'jpeg')
+    response = {
+        'code': 0,
+        'msg': 'success',
+        'name': name
+    }
+    return HttpResponse(json.dumps(response))
 
 
 def post_comment(request):
     item_id = request.POST.get('item_id')
+    user_id = request.POST.get('user_id')
     # print request.FILES['photo']
-    pictures = request.FILES
-    pic_root = os.path.join(settings.MEDIA_ROOT, 'items', item_id)
-    if not os.path.isdir(pic_root):
-        os.mkdir(pic_root)
-    names = []
-    for _, pic in pictures.items():
-        image = Image.open(pic)
-        # name = '%s/%s.jpg'%uuid.uuid1()
-        name = '%s.jpg'%uuid.uuid1()
-        imgpath = os.path.join(pic_root, name)
-        image.save(imgpath, 'jpeg')
-        names.append(name)
+    # pictures = request.FILES
+    # print pictures
+    # pic_root = os.path.join(settings.MEDIA_ROOT, 'items', item_id)
+    # if not os.path.isdir(pic_root):
+    #     os.mkdir(pic_root)
+    # names = []
+    # for _, pic in pictures.items():
+    #     image = Image.open(pic)
+    #     # name = '%s/%s.jpg'%uuid.uuid1()
+    #     name = '%s.jpg'%uuid.uuid1()
+    #     imgpath = os.path.join(pic_root, name)
+    #     image.save(imgpath, 'jpeg')
+    #     names.append(name)
     # return
-    response = {
-        'code': 0,
-        'debug': True,
-        'msg': 'success',
-        'names': names
-    }
-    return HttpResponse(json.dumps(response))
+    # response = {
+    #     'code': 0,
+    #     'debug': True,
+    #     'msg': 'success',
+    #     'names': names
+    # }
+    # return HttpResponse(json.dumps(response))
+    print request.POST
     args = {
-        'pic': ';'.join(names),
-        'item_id': int(item_id),
-        'user_name': user_name
+        # 'pic': ';'.join(names),
+        'item_id': item_id,
+        'user_id': user_id,
+        'score': float(request.POST.get('score')),
+        'comment': request.POST.get('comment'),
+        'evaluation_time': datetime.now().strftime('%Y-%m-%d %X'),
+        'evaluation_pic': ';'.join(request.POST.getlist('pictures[]'))
     }
-    errormsg = dao.post_comment(args)
-    if errormsg:
+    dbr, errormsg = dao.post_comment(args)
+    if not dbr:
         response = {
             'code': -1,
             'msg': errormsg

@@ -1,0 +1,9 @@
+{% if not notinline %}
+<form role="form"  action="{% url 'query' %}" method="get">
+    <div class="form-group" >
+        <label for="query"></label>
+        <input type="text" id="query" name="query" class="form-control" placeholder="获取最新资讯" value="{{ querystring|default:"" }}">
+    </div>
+    <button type="submit" style="visibility:hidden;" id="btn-search" class="btn btn-default">搜索</button>
+</form>
+{% endif %}

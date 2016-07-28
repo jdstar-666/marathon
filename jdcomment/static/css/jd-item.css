@@ -1,0 +1,52 @@
+/**
+* @Author: lisnb
+* @Date:   2016-07-28T09:59:22+08:00
+* @Email:  lisnb.h@hotmail.com
+* @Last modified by:   lisnb
+* @Last modified time: 2016-07-28T11:44:07+08:00
+*/
+
+
+.specs > div {
+  margin-bottom: 30px;
+}
+
+#detail-wrapper {
+  padding-bottom: 30px;
+  border-bottom: 1px solid gray;
+  min-height: 450px;
+}
+
+
+.picture-item {
+
+  max-width: 100px;
+  padding: 4px;
+  display: inline;
+}
+
+.picture-item > img {
+  max-width: 100px;
+  border: 4px solid gray;
+}
+
+
+.comment-row{
+  margin-bottom: 20px;
+  padding-left: 30px;
+  border-left: 2px solid rgb(200, 20, 35);
+}
+
+#comment-wrapper {
+  margin-top: 50px;
+}
+
+.comment-row > div {
+  margin-bottom: 20px;
+}
+
+#detail-picture {
+  opacity: 0.5;
+  /*position: relative;*/
+  margin-top: -15%;
+}

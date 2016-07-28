@@ -1,0 +1,158 @@
+<!--
+@Author: lisnb
+@Date:   2016-07-28T04:28:45+08:00
+@Email:  lisnb.h@hotmail.com
+@Last modified by:   lisnb
+@Last modified time: 2016-07-28T11:01:28+08:00
+-->
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{% static "css/jd-comment.css" %}">
+    <link rel="stylesheet" href="{% static "css/star-rating.css" %}"
+{% endblock stylesheets %}
+
+{% block nav %}
+    {% include "nav.html" with dapp="profile" %}
+{% endblock nav %}
+
+{% block content %}
+<div id="main">
+  <div class="row">
+    <div class="col-md-3">
+      配送服务
+    </div>
+    <div class="col-md-9">
+      <div class="row">
+        <div class="col-md-4">
+          <span>商品包装</span> <input type="text" name="o-i-wrap" class="rating-loading" data-size="xs">
+        </div>
+        <div class="col-md-4">
+          <span>送货速度</span> <input type="text" name="o-i-delivery" class="rating-loading" data-size="xs">
+        </div>
+        <div class="col-md-4">
+          <span>服务态度</span> <input type="text" name="o-i-attitude" class="rating-loading" data-size="xs">
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+  <div class="row" >
+    <div class="col-md-12" id="items-panel">
+
+    </div>
+  </div>
+</div>
+
+<div id="">
+
+</div>
+
+{% endblock content %}
+
+
+{% block scripts %}
+
+<script src="{% static "js/jsrender.min.js" %}"></script>
+<script type="text/javascript" src="{% static "js/star-rating.min.js" %}"></script>
+<script type="text/javascript" src="{% static "js/ajaxupload.3.9.js" %}"></script>
+<!-- <script type="text/javascript" src="{% static "js/star-rating.locale.zh.js" %}"></script> -->
+<script src="{% static "js/jd-comment.js" %}"></script>
+
+{% verbatim templates %}
+
+
+<script type="text/x-jsrender" id="item-template">
+<div class="row item-row">
+  <div class="col-md-3">
+    <div>
+      <img class="item-pic" src="/media/items/{{:item_pic}}">
+    </div>
+    <div>
+      <span>{{:item_title}}</span>
+    </div>
+    <div>
+      <span>￥{{:item_price}}</span>
+    </div>
+  </div>
+  <div class="col-md-9">
+    <div class="row index">
+      <div class="col-md-3">
+        商品满意度
+      </div>
+      <div class="col-md-9">
+        <input type="text" class="rating-loading" required="required" id = "i-{{:item_id}}-index" data-size="xs">
+      </div>
+    </div>
+    <div class="row index">
+      <div class="col-md-3">
+        评价
+      </div>
+      <div class="col-md-9">
+        <textarea class="form-control" rows="3" required="required" id= "i-{{:item_id}}-content"></textarea>
+      </div>
+    </div>
+    <div class="row index">
+      <div class="col-md-3">
+        晒单
+      </div>
+      <div class="col-md-3">
+        <input type="file" id="i-{{:item_id}}-pic" class="ajaxpostimage" data-itemid={{:item_id}}>
+      </div>
+      <div class="col-md-6" id="thumb-wall-i-{{:item_id}}-pic">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 col-md-push-3">
+        <button type="submit" class="btn btn-default ajaxsubmitcomment" data-itemid={{:item_id}}  value="提交">提交</button>
+        <span style="color:red; display:none;" id="hint-{{:item_id}}">提交成功，页面3秒后关闭</span>
+      </div>
+    </div>
+  </div>
+</div>
+</script>
+
+<script id="order-template" type="text/x-jsrender">
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <span>{{:order_time}}</span>&nbsp;&nbsp;&nbsp;
+        <span>订单号：{{:order_id}}</span>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-7">
+            {{:order_items}}
+          </div>
+          <div class="col-md-2">
+            <span>支付金额：</span>188
+          </div>
+          <div class="col-md-3">
+            <a class="btn btn-default" target="_blank" class="comment-order" href="/jdorder/comment/#order_id={{:order_id}}" role="button" data-order={{:order_id}}>评价订单</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</script>
+
+<script id="item-in-order-template" type="text/x-jsrender">
+<div class="row item-row">
+  <div class="col-md-3">
+    <img class="item-pic" src="/media/items/{{:item_pic}}">
+  </div>
+  <div class="col-md-7">
+    <span>{{:item_title}}</span>
+  </div>
+  <div class="col-md-2">
+    <span>x1</span>
+  </div>
+</div>
+</script>
+
+{% endverbatim templates %}
+{% endblock scripts %}

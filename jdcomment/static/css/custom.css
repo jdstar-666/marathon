@@ -1,0 +1,155 @@
+/* 
+* @Author: lisnb
+* @Date:   2015-01-15 13:05:28
+* @Last Modified by:   LiSnB
+* @Last Modified time: 2016-01-22 20:17:28
+*/
+/*#newspaneltype a{
+    text-decoration: none;
+}*/
+.refresh-button{
+    color: white;
+    margin-left: 1em;
+    text-decoration: none;
+}
+
+#rcaptcha{
+    margin-top: 15px;
+}
+
+.bs-alert{
+    /*position: fixed;*/
+}
+
+.appiconlist{
+    list-style: none;
+    margin-left: -40px;
+    margin-top: 100px;
+}
+
+
+.appicon-large{
+    margin-right: 30px;
+    display: inline-block;
+    margin-bottom: 30px;
+}
+
+.appicon-large img{
+    width: 80px;
+}
+
+.collectoretime{
+    right: 0;
+    position: absolute;
+    margin-right: 40px;
+}
+
+.collectorstatus{
+    right:0;
+    position:absolute;
+}
+
+.collectorname{
+    width: 20em;
+    display: inline-block;
+}
+
+#collectorlist{
+    margin-left: 2em;
+}
+
+.channelitem{
+    margin-right: 2em;
+    display: inline;
+    background-color: ghostwhite;
+}
+
+
+#apppanel{
+    /*margin-top: 1em;*/
+}
+
+#newsitemspanel{
+    margin-top: 1em;
+}
+
+.newsitem{
+    margin-bottom: 3px;
+    padding: 2px;
+    /*border: solid 1px #006699;*/
+    border-left: solid .5em #006699;
+    padding-left: .5em;
+    box-sizing:border-box;
+    margin-left: 0;
+}
+
+.newsitem-channel{
+    font-size: 1.3em;
+    padding-top: .4em;
+}
+.newsitem-title{
+    margin-bottom: .3em;
+    font-size: 1.4em;
+    /*text-decoration: none;*/
+}
+.newsitem-title a{
+    text-decoration: none;
+}
+.newsitem-abstract{
+    font-size: .8em;
+}
+.newsitem-source{
+    margin-bottom: .4em;
+}
+
+#channelpanel{
+    margin-top: 1em;
+    margin-bottom: 5em;
+}
+
+#aq{
+    border-right: solid .5em #006699;
+}
+.aqitem{
+    margin-top: 5px;
+}
+.aqitem span{
+    cursor:pointer;
+    /*margin-bottom: 3px;*/
+    /*padding-top: 2px;
+    padding-bottom: 2px;*/
+    font-size: 1em;
+}
+
+.aqitemdel{
+    color: red;
+}
+
+#aqcontrol{
+    margin-top:4px;
+}
+
+#titlelist{
+    /*list-style-type:none;*/
+    /*text-indent: -2em;*/
+}
+
+#titlelist li{
+    font-size: 1.2em;
+    margin-top: .2em;
+}
+
+.tagclouditem{
+    font-size: 1.6em;
+    margin-top: .5em;
+    margin-left: 1.3em;
+    margin-bottom: .4em;
+    /*display: block;*/
+}
+
+.appicon{
+    margin-right: 2em;
+    height: 35px;
+    width: 35px;
+}
+

@@ -1,0 +1,12 @@
+{% load staticfiles %}
+<div class="text-left" id="apppanel">
+    <ul class="nav nav-pills nav-stacked" role="tablist">
+        {% for appitem in apps %}
+        <li role="presentation" {% if appitem.ename == app %} class="active" {% endif %}>
+            <a href="{% url 'apps' appitem.ename %}">
+                <!-- <span class="glyphicon glyphicon-eye-open"></span> --> <img src="{% static "img/icons/icon-"|add:appitem.ename|add:".png"  %}" width="50px" alt="{{ appitem.name }}" class="appicon">{{ appitem.name|default_if_none:"未知应用" }}
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>

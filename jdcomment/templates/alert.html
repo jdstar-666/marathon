@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block nav %}
+    {% include "nav.html" %}
+{% endblock nav %}
+
+{% block content %}
+<div class="jumbotron">
+  <h1>你好！请稍后回来~</h1>
+  <p>
+      正如您所看见的，功能还没有被完全实现，所以请稍后再来~ 
+  </p>
+  <p>
+      <img src="{% static "img/acm/13.png" %}" alt="稍后回来~">
+  </p>
+  <p>
+      下面是已经实现的功能~ 呃。。。实现了一点点... 
+  </p>
+  <p>
+    <a class="btn btn-primary btn-lg" href="/news" role="button">新闻</a>
+    <a class="btn btn-primary btn-lg" href="/newslist" role="button">新闻列表</a>
+    <a class="btn btn-primary btn-lg" href="/search" role="button">搜索</a>
+    <a class="btn btn-primary btn-lg" href="/analysis/newslist/" role="button">分析</a>
+  </p>
+</div>
+{% endblock content %}

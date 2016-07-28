@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{% static "css/custom.css" %}">
+{% endblock stylesheets %} 
+
+{% block nav %}
+    {% include "nav.html" with dapp="analysis" %}
+{% endblock nav %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-9" id="container">
+        
+    </div>
+</div>
+{% endblock content %}
+
