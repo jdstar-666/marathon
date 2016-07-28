@@ -3,7 +3,7 @@
 * @Date:   2016-07-28T05:35:58+08:00
 * @Email:  lisnb.h@hotmail.com
 * @Last modified by:   lisnb
-* @Last modified time: 2016-07-28T09:16:41+08:00
+* @Last modified time: 2016-07-28T13:27:32+08:00
 */
 
 .item-pic {
@@ -31,4 +31,8 @@
 
 .comment-image-thumb > img {
   width: 40px;
+}
+
+#main{
+  margin-top: 50px;
 }

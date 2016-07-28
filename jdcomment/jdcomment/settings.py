@@ -4,7 +4,7 @@
 # @Date:   2016-07-27T13:54:19+08:00
 # @Email:  lisnb.h@hotmail.com
 # @Last modified by:   lisnb
-# @Last modified time: 2016-07-28T02:00:01+08:00
+# @Last modified time: 2016-07-28T13:25:06+08:00
 
 
 
@@ -105,6 +105,9 @@ DATABASES = {
     }
 }
 
+SWITCH = {
+    'censorship': True
+}
 
 # DATABASES_C = {
 #     'mysql': {

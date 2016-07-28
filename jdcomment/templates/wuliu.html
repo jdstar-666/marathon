@@ -1,0 +1,211 @@
+<!doctype html>
+<html>
+<head>
+	<title>评价管理系统</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+
+		}
+		a{
+			text-decoration: none;
+			color: black;
+		}
+		button{
+			border-radius: 5px;
+			padding: 0 10px;
+		}
+
+		.container .header{
+			height:60px;
+			background-color: rgb(201,201,201);
+			width: 100%;
+
+		}
+		.header .title{
+			text-align: center;
+			padding-top: 20px;
+			font-size: 18px;
+			color: black;
+			font-weight: bold;
+		}
+		.header .title .user{
+			font-size: 14px;
+			float: right;
+			font-weight: normal;
+		}
+		.content .left{
+			float: left;
+			width: 10%;
+		}
+		.content .left1,.content .left2{
+			box-sizing:border-box;
+			height: 120px;
+			border: 1px solid black;
+			line-height: 120px;
+			text-align: center;
+		}
+		.active{
+			background-color: rgb(201,201,201);
+		}
+		.clearfix:after{
+			content: ".";
+			display: block;
+			height: 0;
+			clear: both;
+			visibility: hidden;
+		}
+		.clearfix{
+			*zoom:1;
+		}
+		.right{
+		height: 240px;
+		width: 90%;
+		float: left;
+		}
+		.right{
+			display: flex;
+			box-sizing:border-box;
+			border: 1px solid black;
+		}
+		.right .box{
+			flex:1;
+		}
+		
+		.right .box div{
+			padding: 20px 40px;
+		}
+		input{
+			margin-right: 10px;
+		}
+
+		select{
+			padding: 0 10px;
+			border-radius: 5px;
+			margin-left: 40px;
+		}
+		table.gridtable {
+			width:100%; 
+			font-family: verdana,arial,sans-serif;
+			font-size:11px;
+			color:#333333;
+			border-width: 1px;
+			border-color: #666666;
+			border-collapse: collapse;
+		}
+		table.gridtable th {
+			border-width: 1px;
+			padding: 8px;
+			border-style: solid;
+			border-color: #666666;
+			background-color: #dedede;
+		}
+		table.gridtable td {
+			border-width: 1px;
+			padding: 8px;
+			height: 20px;
+			border-style: solid;
+			border-color: #666666;
+			background-color: #ffffff;}
+	</style>
+</head>
+<body>
+	<div class="container clearfix">
+		<div class="header">
+			<div class="title">评 价 管 理 系 统<span class="user">guoxiaomeng1@jd.com</span></div>
+		</div>
+	</div>
+	<div class="content">
+		<div class="left">
+			<div class="left1 active"><a href="shangpin.html">商品评价</a></div>
+			<div class="left2"><a href="wuliu.html">物流评价</a></div>
+		</div>
+		<div class="right">
+			<div class="box">
+				<div>
+					<input type="checkbox">时间
+					<input type="time" style="width:60px">--<input type="time"  style="width:60px">
+					<input type="checkbox" >只看昨天
+				</div>
+				<div>
+					<input type="checkbox">订单ID
+					<input type="text" style="width:100px;">
+					<button>批量导入</button>
+				</div>
+				
+			</div>
+			<div class="box">
+				<div>
+					<input type="checkbox">地域&nbsp;&nbsp;&nbsp;&nbsp;
+					<select>
+						<option>河北保定</option>
+						<option>2</option>
+						<option>1</option>
+						<option>2</option>
+					</select>
+				</div>
+				<div>
+					<input type="checkbox">评价ID
+					<input type="text" style="width:100px;">
+					<button>批量导入</button>
+				</div>
+				<div>
+					<select style="padding:5px 20px; margin-left:180px;">
+						<option>更多</option>
+					</select>
+				</div>
+			</div>
+			<div class="box">
+			<div>
+					<input type="checkbox">物流综合评分&nbsp;&nbsp;&nbsp;&nbsp;
+					<select>
+						<option>1星</option>
+						<option>2星</option>
+						<option>3星</option>
+						<option>4星</option>
+						<option>5星</option>
+					</select>
+				</div>
+				<div>
+					<input type="checkbox">用户ID
+					<input type="text" style="width:100px;">
+					<button>批量导入</button>
+				</div>
+				<div>
+					<button>查询</button>
+					<button>下载</button>
+				</div>	
+			</div>
+
+		</div>
+	</div>
+	<table class="gridtable">
+		<tr>
+			<th>评价时间</th><th>地区</th><th>用户ID</th><th>评价ID</th><th>订单ID</th><th>物流综合等级</th><th>包装评分</th><th>货速评分</th><th>快递员评分</th><th>订单价格</th>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+		</tr>
+	</table>
+</body>
+</html>

@@ -4,7 +4,7 @@
 # @Date:   2016-07-27T14:56:53+08:00
 # @Email:  lisnb.h@hotmail.com
 # @Last modified by:   lisnb
-# @Last modified time: 2016-07-28T09:21:24+08:00
+# @Last modified time: 2016-07-28T13:26:19+08:00
 
 
 
@@ -17,7 +17,16 @@ from PIL import Image
 import uuid
 import os
 from datetime import datetime
+from django.conf import settings
 # Create your views here.
+
+
+def censorship(content):
+    if settings.SWITCH['censorship']:
+        print type(content)
+        if u'哈'in content:
+            return False
+    return True
 
 
 def upload_image(request):
@@ -72,7 +81,16 @@ def post_comment(request):
     #     'names': names
     # }
     # return HttpResponse(json.dumps(response))
-    print request.POST
+    # print request.POST
+    content = request.POST.get('comment')
+    print content, censorship(content)
+    if not censorship(content):
+        response = {
+            'code': -2,
+            'msg': '评论内容中有不适宜发布的内容，请修改后重新发布~'
+        }
+        return HttpResponse(json.dumps(response))
+
     args = {
         # 'pic': ';'.join(names),
         'item_id': item_id,

@@ -3,7 +3,7 @@
 @Date:   2016-07-27T23:46:55+08:00
 @Email:  lisnb.h@hotmail.com
 @Last modified by:   lisnb
-@Last modified time: 2016-07-28T10:27:58+08:00
+@Last modified time: 2016-07-28T14:55:43+08:00
 -->
 {% extends "base.html" %}
 {% load staticfiles %}
@@ -13,14 +13,29 @@
 {% endblock stylesheets %}
 
 {% block nav %}
-    {% include "nav.html" with dapp="profile" %}
+    {% include "nav.html" with dapp="" %}
 {% endblock nav %}
 
 {% block content %}
 <div id="main">
   <div class="jumbotron">
-    <h1>登录以查看订单</h1>
-    <p>...</p>
+    <div class="row">
+      <div class="col-md-6">
+        <img src="/static/img/icons/666logo_rg.png" alt="" style="width:350px;"/>
+      </div>
+      <!-- <div class="col-md-6">
+        <img src="/static/img/icons/666logo_rg.png" alt="" style="width:350px;"/>
+      </div> -->
+      <!-- <div class="col-md-7">
+        <h1>登录以查看订单</h1>
+
+      </div> -->
+    </div>
+
+    <!-- <p> -->
+
+    <!-- </p> -->
+    <!-- <h1>登录以查看订单</h1> -->
   </div>
 </div>
 

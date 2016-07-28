@@ -3,7 +3,7 @@
 * @Date:   2016-07-28T04:30:28+08:00
 * @Email:  lisnb.h@hotmail.com
 * @Last modified by:   lisnb
-* @Last modified time: 2016-07-28T11:56:41+08:00
+* @Last modified time: 2016-07-28T13:21:34+08:00
 */
 
 
@@ -118,6 +118,8 @@ $(document).ready(function(){
         setTimeout(function(){
           window.close();
         }, 3000)
+      }else{
+        alert(response.msg);
       }
     })
   })

@@ -4,7 +4,7 @@
 # @Date:   2016-07-27T16:59:19+08:00
 # @Email:  lisnb.h@hotmail.com
 # @Last modified by:   lisnb
-# @Last modified time: 2016-07-28T10:35:00+08:00
+# @Last modified time: 2016-07-28T13:23:27+08:00
 
 from dbconn import MySQLConn
 
@@ -103,7 +103,7 @@ class JDDao(object):
                 'order_id': order['order_id']
             }
             order['items'], _ = self.get_items_by_orderid(order_args)
-            print order
+            # print order
         # print orders
         return orders, None
 
