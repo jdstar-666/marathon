@@ -3,7 +3,7 @@
 * @Date:   2016-07-28T04:30:28+08:00
 * @Email:  lisnb.h@hotmail.com
 * @Last modified by:   lisnb
-* @Last modified time: 2016-07-28T11:04:04+08:00
+* @Last modified time: 2016-07-28T11:56:41+08:00
 */
 
 
@@ -115,9 +115,9 @@ $(document).ready(function(){
         // console.log($(this))
         // $(this).attr('value', '评价成功')
         // console.log($(this).siblings())
-        // setTimeout(function(){
-        //   window.close();
-        // }, 3000)
+        setTimeout(function(){
+          window.close();
+        }, 3000)
       }
     })
   })

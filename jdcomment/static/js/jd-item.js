@@ -3,7 +3,7 @@
 * @Date:   2016-07-28T09:59:02+08:00
 * @Email:  lisnb.h@hotmail.com
 * @Last modified by:   lisnb
-* @Last modified time: 2016-07-28T11:42:45+08:00
+* @Last modified time: 2016-07-28T11:57:54+08:00
 */
 
 $(document).ready(function(){
@@ -48,8 +48,9 @@ $(document).ready(function(){
       var comments_html = $('#comment-template').render(inner_response.comments)
       console.log(comments_html)
       $('#comment-wrapper').html(comments_html)
+
       $('.rating').rating({
-        defaultCaption: '{rating} 分',
+        // defaultCaption: '{rating} 分',
         readonly: true
       })
     })
